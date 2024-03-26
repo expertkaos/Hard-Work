@@ -14,29 +14,19 @@ body {
     position: fixed;
 }
 
-.Game_development {
+.Game_Development {
     left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    position: absolute;
-    text-align: center;
-    width: 50%;
-    height: 100%;
-    padding: auto;
-    transition: backdrop-filter 0.4s ease;
-    transition: background-color 0.4s ease;
-}
-
-.Game_development:hover{
-    backdrop-filter: blur(20px);
-    background-color: rgba(0, 0, 0, 0.158);
-
 }
 
 .Data_Science {
     right: 0;
+}
+
+button {
+    cursor:pointer;
+    border: 0px;
+    padding: 0px;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,22 +35,19 @@ body {
     text-align: center;
     width: 50%;
     height: 100%;
-    padding: auto;
 
+    background-color:rgba(255, 255, 255, 0) ;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(20px);
+
+    
     transition: backdrop-filter 0.4s ease;
     transition: background-color 0.4s ease;
 }
 
-.Data_Science:hover{
+button:hover{
     backdrop-filter: blur(20px);
     background-color: rgba(0, 0, 0, 0.158);
-}
-
-.Data_Science .Game_development {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(20px);
-    
 }
 
 a {
@@ -70,4 +57,3 @@ a {
     size: 80px;
     font-weight: bold;
 }
-
