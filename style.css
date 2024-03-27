@@ -2,28 +2,46 @@ body {
     margin: 0%;
     font-family: "poppins", sans-serif;
     overflow: hidden;
-    background-image: url("wallpaperflare.com_wallpaper.jpg");
     background-size: cover;
-    
-}
-
-.background_gradient {
-    width: 100%;
-    height: 100%;
-    background-image:linear-gradient(90deg, #ff5f6c59 , #f3b45b2f);
-    position: fixed;
+    background-color: #1c1e26;
 }
 
 .Game_Development {
     left: 0;
+    top: 0;
+    box-shadow: inset -15px 0px 8px -8px rgba(0, 0, 0, 0.2);
 }
 
 .Data_Science {
     right: 0;
+    bottom: 0;
+    box-shadow: inset 15px 0px 8px -8px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 759px) {
+
+    /* For mobile phones: */
+    /* YOUR MOBILE STYLE HERE */
+    .Game_Development {
+        box-shadow: inset 0px -15px 8px -8px rgba(0, 0, 0, 0.2) !important;
+        ;
+    }
+
+    .Data_Science {
+        box-shadow: inset 0px 15px 8px -8px rgba(0, 0, 0, 0.2) !important;
+        ;
+    }
+
+    button {
+        width: 100% !important;
+        ;
+        height: 50% !important;
+        ;
+    }
 }
 
 button {
-    cursor:pointer;
+    cursor: pointer;
     border: 0px;
     padding: 0px;
 
@@ -36,24 +54,40 @@ button {
     width: 50%;
     height: 100%;
 
-    background-color:rgba(255, 255, 255, 0) ;
+    background-color: rgba(255, 255, 255, 0);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(20px);
 
-    
     transition: backdrop-filter 0.4s ease;
     transition: background-color 0.4s ease;
 }
 
-button:hover{
+button:hover {
     backdrop-filter: blur(20px);
-    background-color: rgba(0, 0, 0, 0.158);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 a {
-    color: rgb(255, 255, 255);
+    color: rgb(219, 136, 111);
     vertical-align: middle;
     text-decoration: none;
-    size: 80px;
     font-weight: bold;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+button:hover a {
+    bottom: -5px;
+    border-radius: 5px;
+    transform: translateY(10px);
+    color: rgb(187, 187, 187);
+    transition: .5s ease;
+    text-shadow: rgb(0, 0, 0) 0 0 2px;
+}
+
+button a:hover:after {
+    transform: translateY(0);
+    opacity: 1;
 }

@@ -1,0 +1,45 @@
+body {
+    margin: 0%;
+    font-family: "poppins", sans-serif;
+    background-color: #1c1e26;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+.navbar h1 {
+    text-align: center;
+    color: rgb(219, 136, 111);
+}
+
+.back {
+    left: 1%;
+    position: fixed;
+    cursor: pointer;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.material-icons:hover {
+    color: #bbbbbb !important;
+    ;
+}
+
+.navbar {
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 74%;
+    padding: 0px 13%;
+    background: transparent;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 100;
+}
+
+
