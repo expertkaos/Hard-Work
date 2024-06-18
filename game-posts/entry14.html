@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../entry.css">
 </head>
-	
+
 <body>
 	<nav class="navbar">
 		<div class="back">
@@ -23,31 +23,63 @@
 			<div class="date">May 28, 2024</div>
 		</div>
 		<div class="body" id="overview">
-			<p>This week, I continued developing the game I was assigned last week, making substantial changes to its code. The progress on the game was marked by a significant improvement in the background tiling, which now operates with enhanced logic and continues indefinitely with a minimal number of tiles loaded at one time. Additionally, I introduced an audio manager class, a significant addition that brings the rocket and boosting to life with basic sound effects, enhancing the overall user experience.</p>
+			<p>This week, I continued developing the game I was assigned last week, making substantial changes to its
+				code. The progress on the game was marked by a significant improvement in the background tiling, which
+				now operates with enhanced logic and continues indefinitely with a minimal number of tiles loaded at one
+				time. Additionally, I introduced an audio manager class, a significant addition that brings the rocket
+				and boosting to life with basic sound effects, enhancing the overall user experience.</p>
 		</div>
 		<div class="body" id="evidence">
-			<p>The changed code for my Pygame game is in this <a target="_blank" href="https://github.com/expertkaos/GameDev11/compare/Entry_13...Entry_14">Git Hub Repository.</a> </p>
+			<p>The changed code for my Pygame game is in this <a target="_blank"
+					href="https://github.com/expertkaos/GameDev11/compare/Entry_13...Entry_14">Git Hub Repository.</a>
+			</p>
 		</div>
 		<div class="body" id="content">
-			<p>At the end of last week, I intended to improve the background logic. Originally, it worked by reddening the background image, measuring its dimensions, and then drawing it on the screen evenly apart according to its width and height. Tiling in this way ran into a problem when moving around the background to give the effect of the ship moving, leading to the background running out and ending with a black background. This problem happened because of the way the background tiles were drawn. They could only repeat a limited amount of times. At first, I tried to fix this by repeating it more times than before, yet I still could run out of tiles eventually, and if I made the number too big, the game became choppy with the number of tiles the game was required to render each frame. </p>
-			<p>To solve my problem, I looked for ways to create an infinitely repeating tiling system. I ran across a YouTube video of this exact situation. The only difference was that the tutorial was for a one-way scroller like in Flappy Bird. </p>
-			<a target="_blank" href="https://www.youtube.com/watch?v=ARt6DLP38-Y&list=LL&index=2&t=601s">The video I learnt about Infinite Scrolling Backgrounds from.</a>
-			<p>After viewing a tutorial, I adapted its concept for the background movement in my game. The code calculates how many background tiles are needed to cover the screen, then adds an extra tile offscreen to prevent gaps when the spaceship moves. This ensures continuous coverage, but the tile will eventually move offscreen. The tutorial featured a method where the background resets its position after moving a screen’s length, creating an illusion of endless movement. My game’s logic differed, so I couldn’t directly apply this method. However, I modified the idea to fit my needs.</p>
-			<p><i class="code">x_displacement = spaceship.rect.centerx - (math.ceil(spaceship.rect.centerx / bg_width) * bg_width)</i></p>
-			<p>Within the video, the movement was at a constant speed in one direction. The code above was how the game could figure out where to move the background. It calculates how far away the player is from the starting point and then sees how many times that is across the screen’s width.</p>
-			<p><i class="code">math.ceil(self.paralex_x / self.bg_width)</i> calculates how many times the spaceship’s x-coordinate fits into the background width.</p>
+			<p>At the end of last week, I intended to improve the background logic. Originally, it worked by reddening
+				the background image, measuring its dimensions, and then drawing it on the screen evenly apart according
+				to its width and height. Tiling in this way ran into a problem when moving around the background to give
+				the effect of the ship moving, leading to the background running out and ending with a black background.
+				This problem happened because of the way the background tiles were drawn. They could only repeat a
+				limited amount of times. At first, I tried to fix this by repeating it more times than before, yet I
+				still could run out of tiles eventually, and if I made the number too big, the game became choppy with
+				the number of tiles the game was required to render each frame. </p>
+			<p>To solve my problem, I looked for ways to create an infinitely repeating tiling system. I ran across a
+				YouTube video of this exact situation. The only difference was that the tutorial was for a one-way
+				scroller like in Flappy Bird. </p>
+			<a target="_blank" href="https://www.youtube.com/watch?v=ARt6DLP38-Y&list=LL&index=2&t=601s">The video I
+				learnt about Infinite Scrolling Backgrounds from.</a>
+			<p>After viewing a tutorial, I adapted its concept for the background movement in my game. The code
+				calculates how many background tiles are needed to cover the screen, then adds an extra tile offscreen
+				to prevent gaps when the spaceship moves. This ensures continuous coverage, but the tile will eventually
+				move offscreen. The tutorial featured a method where the background resets its position after moving a
+				screen’s length, creating an illusion of endless movement. My game’s logic differed, so I couldn’t
+				directly apply this method. However, I modified the idea to fit my needs.</p>
+			<p><i class="code">x_displacement = spaceship.rect.centerx - (math.ceil(spaceship.rect.centerx / bg_width) *
+					bg_width)</i></p>
+			<p>Within the video, the movement was at a constant speed in one direction. The code above was how the game
+				could figure out where to move the background. It calculates how far away the player is from the
+				starting point and then sees how many times that is across the screen’s width.</p>
+			<p><i class="code">math.ceil(self.paralex_x / self.bg_width)</i> calculates how many times the spaceship’s
+				x-coordinate fits into the background width.</p>
 			<p>Multiplying this by<i class="code">self.bg_width</i> gives the total distance the spaceship covers.</p>
 		</div>
 		<div class="body" id="review">
 			<h3>Why is the new background method better for my game?</h3>
-			<p>I found a better way to create a background that helps my game run smoother. Now, there are fewer images to manage, which means less work for the game and no more lag. Anyone playing feels like they’re flying through space because the background moves perfectly without any sudden stops or empty spaces.</p>
+			<p>I found a better way to create a background that helps my game run smoother. Now, there are fewer images
+				to manage, which means less work for the game and no more lag. Anyone playing feels like they’re flying
+				through space because the background moves perfectly without any sudden stops or empty spaces.</p>
 
 			<h3>What issues did I face when adding sound, and how did I solve them?</h3>
-			<p>Adding sound was a bit of a puzzle. I had to make sure the sounds matched the action in the game. It took some trial and error with timing and volume to get it right. I picked the coolest sounds for the rocket and boosts and made sure they played at the right time.</p>
+			<p>Adding sound was a bit of a puzzle. I had to make sure the sounds matched the action in the game. It took
+				some trial and error with timing and volume to get it right. I picked the coolest sounds for the rocket
+				and boosts and made sure they played at the right time.</p>
 
 			<h3>How could I improve the moving background in the future?</h3>
-			<p>I’m thinking about adding layers to the background that move at different speeds. This would make it look like there’s more depth, which would be cool. Also, I want to ensure the background looks good on all screens, big or small.</p>
+			<p>I’m thinking about adding layers to the background that move at different speeds. This would make it look
+				like there’s more depth, which would be cool. Also, I want to ensure the background looks good on all
+				screens, big or small.</p>
 		</div>
 	</nav>
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="../entry.css">
 </head>
-	
+
 <body>
 	<nav class="navbar">
 		<div class="back">
@@ -23,64 +23,160 @@
 			<div class="date">June 11, 2024</div>
 		</div>
 		<div class="body" id="overview">
-			<p>This week was the final week for this project, which I have been working on for the last several weeks. The progress I completed this week was that I completely reworked the game's assets, including changing all images to a new art style and changing the player's animation. Instead of a simple image switch, the player now experiences a rocket boost effect with a trail of a new flame sprite. I also added gravity to the planets and created a concept code for navigation that will point the player in the right direction to the closest planet.</p>
+			<p>This week was the final week for this project, which I have been working on for the last several weeks.
+				The progress I completed this week was that I completely reworked the game's assets, including changing
+				all images to a new art style and changing the player's animation. Instead of a simple image switch, the
+				player now experiences a rocket boost effect with a trail of a new flame sprite. I also added gravity to
+				the planets and created a concept code for navigation that will point the player in the right direction
+				to the closest planet.</p>
 		</div>
 		<div class="body" id="evidence">
-			<p>The changed code for my Pygame game is in this <a target="_blank" href="https://github.com/expertkaos/GameDev11/compare/Entry_15...Entry_16">Git Hub Repository.</a> </p>
+			<p>The changed code for my Pygame game is in this <a target="_blank"
+					href="https://github.com/expertkaos/GameDev11/compare/Entry_15...Entry_16">Git Hub Repository.</a>
+			</p>
 			<video autoplay loop muted playsinline>
-				<source src="entry16_ev.mp4" type="video/mp4">
-			  Your browser does not support the video tag.
-			</video> 
+				<source src="game_evidence/game_entry16_ev.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
 		</div>
 
 		<div class="body" id="content">
-			<p>At the beginning of the week, a good place to start was to make a component to easily get the distance between the planets and the main player. I chose to do this because some of the elements I want to add to my game will rely on this mechanic to work. The distance module was required to add a compass to show nearby planets and give the planets a gravitational pull, and it would be useful in the future if I were to continue with this project.</p>
+			<p>At the beginning of the week, a good place to start was to make a component to easily get the distance
+				between the planets and the main player. I chose to do this because some of the elements I want to add
+				to my game will rely on this mechanic to work. The distance module was required to add a compass to show
+				nearby planets and give the planets a gravitational pull, and it would be useful in the future if I were
+				to continue with this project.</p>
 
-			<p>I had to figure out the concept's fundamentals when making the planet's gravity. Since there will be many planets, each with a force, I wanted an easy way to apply it to the player. To solve this problem, I devised a way to calculate each planet's gravity and convert it into a total x and y value to move the player around depending on the total gravitational force. I used Newton's law of gravity to determine each planet's gravity.</p>
+			<p>I had to figure out the concept's fundamentals when making the planet's gravity. Since there will be many
+				planets, each with a force, I wanted an easy way to apply it to the player. To solve this problem, I
+				devised a way to calculate each planet's gravity and convert it into a total x and y value to move the
+				player around depending on the total gravitational force. I used Newton's law of gravity to determine
+				each planet's gravity.</p>
 
 			<div class="equation">
-				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><mi>G</mi><mo>⋅</mo><mfrac><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>⋅</mo><msub><mi>m</mi><mn>2</mn></msub></mrow><msup><mi>r</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">F = G \cdot \frac{ m_1 \cdot m_2}{r^2}
-				</annotation></semantics></math>
-				</div>
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					<semantics>
+						<mrow>
+							<mi>F</mi>
+							<mo>=</mo>
+							<mi>G</mi>
+							<mo>⋅</mo>
+							<mfrac>
+								<mrow>
+									<msub>
+										<mi>m</mi>
+										<mn>1</mn>
+									</msub>
+									<mo>⋅</mo>
+									<msub>
+										<mi>m</mi>
+										<mn>2</mn>
+									</msub>
+								</mrow>
+								<msup>
+									<mi>r</mi>
+									<mn>2</mn>
+								</msup>
+							</mfrac>
+						</mrow>
+						<annotation encoding="application/x-tex">F = G \cdot \frac{ m_1 \cdot m_2}{r^2}
+						</annotation>
+					</semantics>
+				</math>
+			</div>
 
 			<p>The equation is how gravity is calculated. In this equation:</p>
 			<ul>
-			<li><b>F</b> is the gravitational force exerted between two objects.</li>
-			<li><b>G</b> is the gravitational constant; on Earth, it is 9.807 m/s².</li>
-			<li><b>m<sub>1</sub></b> and <b>m<sub>2</sub></b> are the masses of the interacting objects.</li>
-			<li><b>r</b> is the distance.</li>
+				<li><b>F</b> is the gravitational force exerted between two objects.</li>
+				<li><b>G</b> is the gravitational constant; on Earth, it is 9.807 m/s².</li>
+				<li><b>m<sub>1</sub></b> and <b>m<sub>2</sub></b> are the masses of the interacting objects.</li>
+				<li><b>r</b> is the distance.</li>
 			</ul>
 
-			<p>For simplicity and to streamline the calculations within my game's environment, I changed the formula to:</p>
+			<p>For simplicity and to streamline the calculations within my game's environment, I changed the formula to:
+			</p>
 
 			<div class="equation">
-				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><mfrac><mi>k</mi><msup><mi>r</mi><mn>2</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">F = \frac{k}{r^2} 
-				</annotation></semantics></math>
-				</div>
-	
+				<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+					<semantics>
+						<mrow>
+							<mi>F</mi>
+							<mo>=</mo>
+							<mfrac>
+								<mi>k</mi>
+								<msup>
+									<mi>r</mi>
+									<mn>2</mn>
+								</msup>
+							</mfrac>
+						</mrow>
+						<annotation encoding="application/x-tex">F = \frac{k}{r^2}
+						</annotation>
+					</semantics>
+				</math>
+			</div>
 
-			<p>In this simplified version, k is a constant that encapsulates the values of G, m_1, and m_2. I did this because I wanted each planet to have the same gravity, and my game does not have a concept of weight or gravity. This constant was determined based on the desired gravitational pull at the planet's surface.</p>
-			
-			<p>I began with a concept for my game: an indicator that points to the nearest planet. This feature could later evolve into an unlockable device, providing players with a new objective to acquire more minerals. Ideally, the indicator would be positioned at the centre of the screen, rotating within a circle to align with the closest planet relative to the player's location. However, I encountered numerous issues due to the initial structure of my game's code. To resolve this, I isolated the development of this concept into a separate Python file. This allowed me to flesh out the idea and perfect the method before integrating it into the main game. The video below demonstrates the concept in action.</p>
-			<p>I'm considering implementing a camera class to enhance my game rather than limiting the camera mobility to just the player's movement. This addition would facilitate future modifications and enrich the gameplay experience. With a camera class, I could introduce dynamic features like zooming in and out as the player approaches a planet. This would improve navigation, making it simpler to locate planets by expanding the field of view while retaining the precision needed for landing the ship on planetary surfaces.</p>	
-			
+
+			<p>In this simplified version, k is a constant that encapsulates the values of G, m_1, and m_2. I did this
+				because I wanted each planet to have the same gravity, and my game does not have a concept of weight or
+				gravity. This constant was determined based on the desired gravitational pull at the planet's surface.
+			</p>
+
+			<p>I began with a concept for my game: an indicator that points to the nearest planet. This feature could
+				later evolve into an unlockable device, providing players with a new objective to acquire more minerals.
+				Ideally, the indicator would be positioned at the centre of the screen, rotating within a circle to
+				align with the closest planet relative to the player's location. However, I encountered numerous issues
+				due to the initial structure of my game's code. To resolve this, I isolated the development of this
+				concept into a separate Python file. This allowed me to flesh out the idea and perfect the method before
+				integrating it into the main game. The video below demonstrates the concept in action.</p>
+			<p>I'm considering implementing a camera class to enhance my game rather than limiting the camera mobility
+				to just the player's movement. This addition would facilitate future modifications and enrich the
+				gameplay experience. With a camera class, I could introduce dynamic features like zooming in and out as
+				the player approaches a planet. This would improve navigation, making it simpler to locate planets by
+				expanding the field of view while retaining the precision needed for landing the ship on planetary
+				surfaces.</p>
+
 			<video autoplay loop muted playsinline>
-				<source src="entry16.mp4" type="video/mp4">
-			  Your browser does not support the video tag.
-			</video> 
+				<source src="game_evidence/game_entry16.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
 
-			<p>I'm considering implementing a camera class to enhance my game rather than limiting the camera mobility to just the player's movement. This addition would facilitate future modifications and enrich the gameplay experience. With a camera class, I could introduce dynamic features like zooming in and out as the player approaches a planet. This would improve navigation, making it simpler to locate planets by expanding the field of view while retaining the precision needed for landing the ship on planetary surfaces.</p>	
+			<p>I'm considering implementing a camera class to enhance my game rather than limiting the camera mobility
+				to just the player's movement. This addition would facilitate future modifications and enrich the
+				gameplay experience. With a camera class, I could introduce dynamic features like zooming in and out as
+				the player approaches a planet. This would improve navigation, making it simpler to locate planets by
+				expanding the field of view while retaining the precision needed for landing the ship on planetary
+				surfaces.</p>
 		</div>
 		<div class="body" id="review">
 			<h3>Balancing Complexity and Performance</h3>
-			<p>In the initial stages of my game development, I experienced a smooth and rapid progression. However, as the project continued over the weeks, my pace began to slow. This deceleration wasn’t due to a lack of effort but stemmed from the challenges I encountered while integrating new concepts into my code. Despite my solid understanding of the new code I intended to add, the foundational code of my game required clearer structuring. As a result, I often made quick fixes to new components, such as reversing negative values, instead of revisiting and refining the original code. This approach led to confusion within each game component. While the issues are certainly solvable, they demand additional time to address—a resource already stretched thin by the effort spent troubleshooting each new component’s integration and determining the reasons behind malfunctions.</p>
+			<p>In the initial stages of my game development, I experienced a smooth and rapid progression. However, as
+				the project continued over the weeks, my pace began to slow. This deceleration wasn’t due to a lack of
+				effort but stemmed from the challenges I encountered while integrating new concepts into my code.
+				Despite my solid understanding of the new code I intended to add, the foundational code of my game
+				required clearer structuring. As a result, I often made quick fixes to new components, such as reversing
+				negative values, instead of revisiting and refining the original code. This approach led to confusion
+				within each game component. While the issues are certainly solvable, they demand additional time to
+				address—a resource already stretched thin by the effort spent troubleshooting each new component’s
+				integration and determining the reasons behind malfunctions.</p>
 
 			<h3>Future-Proofing the Codebase</h3>
-			<p>To future-proof my codebase, I’ve attempted modular design principles, allowing for easier updates and adding new features. I’ve ensured that each component is loosely coupled and highly cohesive, simplifying maintenance and facilitating scalability. By writing clean, well-documented code and adhering to best practices, I’ve created a solid foundation that can adapt to future requirements, whether that involves integrating advanced technologies or expanding the game’s complexity.</p>
+			<p>To future-proof my codebase, I’ve attempted modular design principles, allowing for easier updates and
+				adding new features. I’ve ensured that each component is loosely coupled and highly cohesive,
+				simplifying maintenance and facilitating scalability. By writing clean, well-documented code and
+				adhering to best practices, I’ve created a solid foundation that can adapt to future requirements,
+				whether that involves integrating advanced technologies or expanding the game’s complexity.</p>
 
 			<h3>Lessons Learned from Complexity-Performance Trade-offs</h3>
-			<p>The trade-offs between complexity and performance have taught me the importance of strategic planning and optimisation. I’ve learned that sometimes less is more; a simpler solution can lead to better performance and less overhead. This experience has underscored the value of profiling and benchmarking as part of the development process, ensuring that performance is measured and not just assumed. Moving forward, I will prioritise writing efficient code from the outset, considering the long-term impact of my decisions on the game’s performance. These lessons will be invaluable as I continue to develop games that are both feature-rich and performant.</p>
+			<p>The trade-offs between complexity and performance have taught me the importance of strategic planning and
+				optimisation. I’ve learned that sometimes less is more; a simpler solution can lead to better
+				performance and less overhead. This experience has underscored the value of profiling and benchmarking
+				as part of the development process, ensuring that performance is measured and not just assumed. Moving
+				forward, I will prioritise writing efficient code from the outset, considering the long-term impact of
+				my decisions on the game’s performance. These lessons will be invaluable as I continue to develop games
+				that are both feature-rich and performant.</p>
 		</div>
 	</nav>
 </body>
+
 </html>

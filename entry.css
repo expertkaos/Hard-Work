@@ -70,18 +70,18 @@ math {
 	text-align: center;
 }
 
-#evidence  video, img {
-	width:80%;
+#evidence  video, #evidence img {
+	width:80% ;
 	border-radius: 15px;
     display: sticky;
-}
+}   
 #evidence p{
     width: 80%;
 }
 .header {
 	padding-left: 2%;
 }
-video {
+video, img{
     min-height: 100%;
     width: auto;
     height: auto;
