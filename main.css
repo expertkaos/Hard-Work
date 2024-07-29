@@ -91,6 +91,15 @@ header h1 {
 
 }
 
+.divider {
+    border: none;
+    border-top: 1px dashed #494b51;
+    height: 1px;
+    margin: 20px 0 50px;
+
+}
+
+
 .post h2 {
     font: italic 800 40px Open Sans, sans-serif;
     color: #ff7357;
