@@ -26,6 +26,7 @@ body {
     color: rgb(219, 136, 111);
     font-size: 25px;
 }
+
 .equation {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: block;
@@ -37,6 +38,7 @@ body {
     background-color: transparent;
     width: auto;
 }
+
 math {
     margin: 10px 0;
 }
@@ -55,69 +57,80 @@ math {
 
 .material-icons:hover {
     color: #bbbbbb !important;
-    
+
 }
 
 .page-body {
-    width: 80%;
+    width: 75%;
     margin: auto;
-    max-width: 1200px;
+    max-width: 1100px;
 }
 
 #evidence {
-	padding: 20px 0 20px 0;
-	align-items: center; 
-	text-align: center;
+    padding: 20px 0 20px 0;
+    align-items: center;
+    text-align: center;
 }
 
-#evidence  video, #evidence img {
-	width:80% ;
-	border-radius: 15px;
+#evidence video,
+#evidence img {
+    width: 80%;
+    border-radius: 15px;
     display: sticky;
-}   
-#evidence p{
+}
+
+#evidence p {
     width: 80%;
 }
+
 .header {
-	padding-left: 2%;
+    padding-left: 2%;
 }
-video, img{
+
+video,
+img {
     min-height: 100%;
     width: auto;
     height: auto;
     border-radius: 15px;
-    
+    margin-bottom: 2%;
+
     overflow: hidden;
 }
 
-.header h2{
+.small-img {
+    width: 70%;
+    margin: auto;
+}
+
+.header h2 {
     font: italic 800 40px Open Sans, sans-serif;
     color: #ff7357;
     border: 0;
     width: 100%;
     text-align: left;
-	margin-bottom: 2px;
+    margin-bottom: 2px;
 }
 
 .body h3 {
     margin-bottom: 0;
     color: #ffffff;
-}  
+}
 
 .body p {
-    margin:10px 0 ;
-    
+    margin: 10px 0;
+
 }
 
 .date {
     color: #cccccc;
     font: 600 14px Open Sans, sans-serif;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .body {
     display: flex;
-    padding: 20px 5% ;
+    padding: 20px 5%;
     flex-direction: column;
     align-content: center;
     text-align: left;
@@ -135,13 +148,13 @@ video, img{
 
 
 .body a {
-	color: #db886f;
-	font-weight: bold;
+    color: #db886f;
+    font-weight: bold;
 }
 
 .body a:hover {
     color: #bbbbbb !important;
-    
+
 }
 
 .checklist {
@@ -153,18 +166,22 @@ video, img{
 
 .code-block {
     position: relative;
-    background-color: #17181f; /* Match Prism.js theme background color */
+    background-color: #17181f;
+    /* Match Prism.js theme background color */
     border: none;
     border-radius: 5px;
     padding: 5px;
     font-family: monospace;
     overflow: auto;
+    font-size: 12px;
 }
+
 .code-block:hover .code-label,
 .code-block:hover .copy-button {
     display: block;
     opacity: 1;
 }
+
 .code-label {
     position: absolute;
     top: 10px;
@@ -177,6 +194,7 @@ video, img{
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+
 .copy-button {
     position: absolute;
     top: 10px;
@@ -191,10 +209,12 @@ video, img{
     opacity: 0;
     transition: opacity 0.3s ease;
 }
-:not(pre) > code[class*="language-"], pre[class*="language-"] {
+
+:not(pre)>code[class*="language-"],
+pre[class*="language-"] {
     background: #17181f;
     font-family: Consolas, 'Courier New', monospace;
-  }
+}
 
 @media only screen and (max-width: 759px) {
 
@@ -202,32 +222,42 @@ video, img{
         width: 100% !important;
     }
 
-	.body {
+    .body {
         border-radius: 0px !important;
         border: 0px !important;
     }
 
-	.page-body h2 {
+    .page-body h2 {
         font-size: 30px !important;
     }
 
-	.date {
+    .date {
         font-size: 12px !important;
     }
 
-	.header {
-	padding-left: 4% !important;
+    .header {
+        padding-left: 4% !important;
     }
-    #evidence  video, img{
+
+    .small-img {
+        width: auto;
+    }
+
+    img{
+        margin: 0  !important;
+    }
+
+    #evidence video,
+    img {
         width: 100%;
         border-radius: 0;
     }
-    #evidence  {
+
+    #evidence {
         padding-bottom: 0;
     }
+
     video {
         border-radius: 0px;
     }
 }
-
-
