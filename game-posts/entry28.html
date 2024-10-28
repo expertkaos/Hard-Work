@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../game_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Game Development</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 28&nbsp;</h2>
+			<div class="date">October 28, 2024</div>
+		</div>
+		<div class="body" id="overview">
+			<p>This week marked the second week of our project task. At the beginning of the week, we allocated the
+				requirements for each person's terrain and determined its placement on the grid. We made these decisions
+				through a bidding process, where each person received 100 fake dollars. My progress this week involved
+				starting to develop the basic shape of my island. </p>
+		</div>
+
+		<div class="body" id="evidence">
+			<!-- <p> link<a target="_blank" href=https://">link</a> -->
+			</p>
+			<img src="game_evidence/entry_28/evidence_1.png">
+			<img src="game_evidence/entry_28/evidence_2.png">
+			<img src="game_evidence/entry_28/evidence_3.png">
+		</div>
+
+		<div class="body" id="content">
+			<p>After the bidding, I ended up with these requirements:</p>
+			<ul>
+				<li>Peninsula</li>
+				<li>Trail</li>
+				<li>Mesa</li>
+				<li>Lake</li>
+				<li>Dry Forest</li>
+				<li>Blowout</li>
+				<li>Sand Dunes</li>
+			</ul>
+			<p>When bidding for items, I tried to maintain a theme. By staying within the theme, I could make the item
+				look nicer and easier to create.</p>
+		</div>
+
+		<div class="body" id="content">
+			<p>My approach to this task was to create the base shape of the terrain before I did anything else. I found
+				this challenging, as I had not previously made a specific shape for an island. My first attempt at
+				creating the land structure was with the shape tool within a World Machine, but I soon found that its
+				creation was limited.</p>
+			<p>I continued experimenting to determine how to create the basic shape until I came up with the idea of
+				making my own height map in Photoshop. The way World Machine terrain operates is based on a PNG height
+				map. It’s quite simple: the whiter the pixel in the image, the higher it will be displayed, and the
+				darker the pixel, the lower it will be. using this, I could draw a simple height map to create the
+				shape, and then I can use a world machine to make it look like actual terrain.</p>
+			<img class="small-img" src="game_evidence/entry_28/evidence_4.png">
+			<p>The image above showcases my simple drawing of a height map, which outlines what I aimed to achieve.
+				However, when I attempted to create this height map, I realized that my artistic skills weren’t the
+				best, especially when using a trackpad. To address this issue, I searched Google Maps for a peninsula
+				along the coast of Australia that I liked and thought would work well for my project. While I never
+				found the perfect peninsula, I did come across a nice one. I took a screenshot of it and imported it
+				into Photoshop. At that point, I couldn’t use the screenshot directly, so I converted it to black and
+				white by setting the saturation to 0. I refined the contrast to distinguish clearly between land and
+				ocean. After reshaping the landforms to match the design, I ended up with the image above, which I then
+				inserted into World Machine.</p>
+			<img class="small-img" src="game_evidence/entry_28/evidence_5.png">
+		</div>
+
+		<!-- <div class="body" id="content">
+			<div class="code-block">
+				<div class="code-label">Python</div>
+				<button class="copy-button" onclick="copyCode(this)">Copy</button>
+				<pre><code class="language-python">
+
+				</code></pre>
+			</div>
+		</div> -->
+
+		</div>
+
+
+		<div class="body" id="review">
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+		</div>
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>
