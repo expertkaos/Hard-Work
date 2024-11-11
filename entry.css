@@ -103,6 +103,14 @@ img {
     margin: auto;
 }
 
+.code-img { 
+    border-radius: 0px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-bottom: 0;
+    margin-top: 2%;
+}
+
 .header h2 {
     font: italic 800 40px Open Sans, sans-serif;
     color: #ff7357;
