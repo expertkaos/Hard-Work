@@ -12,7 +12,7 @@ body {
     box-shadow: inset -15px 0px 8px -8px rgba(0, 0, 0, 0.2);
 }
 
-.Data_Science {
+.Robotics {
     right: 0;
     bottom: 0;
     box-shadow: inset 15px 0px 8px -8px rgba(0, 0, 0, 0.2);
@@ -27,7 +27,7 @@ body {
         ;
     }
 
-    .Data_Science {
+    .Robotics {
         box-shadow: inset 0px 15px 8px -8px rgba(0, 0, 0, 0.2) !important;
         ;
     }
