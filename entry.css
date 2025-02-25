@@ -182,6 +182,7 @@ img {
     font-family: monospace;
     overflow: auto;
     font-size: 12px;
+    width: 80%;
 }
 
 .code-block:hover .code-label,

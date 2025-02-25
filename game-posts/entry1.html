@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../game_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Game Development</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 1&nbsp;</h2>
+			<div class="date">February 10, 2025</div>
+		</div>
+
+		<div class="body" id="overview">
+			<p>This entry covers the first two weeks of this class. During this time, we received an overview of the
+				course and the activities we would engage in. We were then instructed to brainstorm ideas for the game
+				we would create for our class project.</p>
+		</div>
+
+		<div class="body" id="evidence">
+			<p>My game design document: <a target="_blank"
+					href=https://docs.google.com/document/d/10ZaMDcwzTpQ3kPoZfbS2x4B0lXN2MJjQqb8iJej2t9c/edit?usp=sharing>google
+					doc</a></p>
+
+			<video autoplay loop muted playsinline>
+				<source src="game_evidence/entry_1/evidence_1.mp4" type="video/webm">
+				Your browser does not support the video tag.
+			</video>
+
+
+		</div>	
+
+		<div class="body" id="content">
+			<p>When deciding on what my game would be about, I had many ideas that I had been thinking about. Still, I
+				decided on the game idea of a top-down 1v1 boat combat game that will have a game aspect of the loser of
+				each round will be able to choose a card that will give them a buff to create a more interesting aspect
+				to the game and provides a handy cap to the worse players. For this game, I want it to be multiplayer,
+				but to avoid the instinct trouble that a multiplayer game gives, I will make it possible to play two
+				players on one keyboard.
+
+			</p>
+			<p>
+				I have decided to create my game using Unity as it's much better with 2d games than Unreal, and I have
+				some recent experience with it. I briefly considered using pygame, but I had already developed a game
+				prototype using pygame. I would rather use a game engine to avoid coding the basics of the game, such as
+				physics and camera class. This way, I can focus on the actual making of a game that is fun and engaging,
+				which I have not previously really learnt about. Using a game engine will help me learn more in this
+				class.
+			</p>
+			<img class="small-img" src="game_evidence/entry_1/evidence_2.png">
+			<p>
+				While developing my game, I created a new Unity project: Pew Pew Boats. My first goal was to implement
+				player input and movement. To achieve this, I made two capsule sprites: Player One and Player Two. I
+				coded the movement mechanics, assigning the 'A' and 'D' keys for turning left and right for Player One
+				and the left and right arrow keys for Player Two, while Player Two uses the up and down arrow keys. I
+				decided to have both players controlled from the same computer because I have always enjoyed games with
+				that multiplayer dynamic, like Lava Boy and Water Girl.
+			</p>
+			<img class="small-img" src="game_evidence/entry_1/evidence_3.png">
+			<p>
+				After I completed the basic player movement, I focused on implementing the ability to shoot a cannon
+				from the boats. To achieve this, I created a new circle sprite named "projectile." I then coded it to
+				clone itself and shoot from the player that initiated the action.
+				I wanted to create some basic boat assets, which I was planning to be quick and easy, but I found that I
+				was not too much of an artist, and there were no free assets that were what I wanted, so the act of
+				making the boat assets took a lot longer than I wanted to. I approached making the assets by creating
+				the shape of the boats with Microsoft Paint, as they provide an easy way to put shapes together. After I
+				created that, I moved into gimp, which allows me to be more precise with my creation; I found that I
+				made my first try of the asset was way too low resolution, so I had to restart and make it all again. I
+				thought this would be quicker the second time, but I spent too much time trying to make it look perfect.
+
+			</p>
+
+
+		</div>
+
+		<div class="body" id="review">
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+		</div>
+
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>

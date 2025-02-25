@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../game_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Game Development</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 2&nbsp;</h2>
+			<div class="date">February 24, 2025</div>
+		</div>
+
+		<div class="body" id="overview">
+			<p>Although this week was not my most productive, I was sick for half of it, and even after I got better, I
+				had a migraine. I still attempted to work to the fullest ability I could. At the beginning of this week,
+				I wanted to finish the projectile logic and write so that the projectile size and speed can easily be
+				changed depending on the player's class. However, I got distracted from my goal of finishing the
+				projectile logic rather than continuing to work on the overall looks of my game because I decided to
+				work on my assets more. I, therefore, ran out of time for my original goal.</p>
+		</div>
+
+		<div class="body" id="evidence">
+
+			<img src="game_evidence/entry_2/evidence_1.png">
+
+		</div>
+
+		<div class="body" id="content">
+			<p>This week wasn't a total waste of time but a useful lesson that I need to consider for my future making of this game. The goals are great. They give you an objective and a moving force to continue with a project. Still, when I set my goal, I had trouble handling the challenge acutely, as I found it too difficult. Therefore, I impulsively worked on something I could hold better, which, in this case, was working on my assets.
+				With that, my assets' progress marginally changed, but I advised my knowledge of the visual side of unity. I learned that although I am working with 2D, you can still have the third axis, so you can add fog so the further stuff from the camera will be foggier; this can be done with shades, which I have learned about in the previous week. You can add a colour or an image to a spirit, but they can often be flat. This is where you can use shaders to change certain covers, add a glow, add an outline, and, as previously stated, add a fog effect; these shades can be made in either text or nodes. I haven't yet played with shades much, but I am very excited to see what they offer in the future.
+				</p>
+			<img class="small-img" src="game_evidence/entry_2/evidence_2.jpg">
+			<p>This week, I added a wake effect to my boats. I completed this by making a simple gradient in Photoshop with black on two ends, slowly getting lighter as they move inwards. I added this gradient to a prebuilt trail method and tweaked the values until I was happy with it; I'm hoping that I will be able to use shaders to make the wake look better. </p>
+
+
+		</div>
+
+		<div class="body" id="review">
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+		</div>
+
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>
