@@ -75,7 +75,7 @@ math {
 #evidence video,
 #evidence img {
     width: 80%;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     display: sticky;
 }
 
@@ -103,7 +103,7 @@ img {
     margin: auto;
 }
 
-.code-img { 
+.code-img {
     border-radius: 0px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -182,8 +182,14 @@ img {
     font-family: monospace;
     overflow: auto;
     font-size: 12px;
+    width:98%;
+    margin: auto;
+}
+
+#evidence .code-block {
     width: 80%;
 }
+
 
 .code-block:hover .code-label,
 .code-block:hover .copy-button {
@@ -252,13 +258,15 @@ pre[class*="language-"] {
         width: auto;
     }
 
-    img{
-        margin: 0  !important;
+    img {
+        margin: 0 !important;
     }
 
-    #evidence video,
-    img {
-        width: 100%;
+    video,
+    img,
+    .code-block,
+    .code-img {
+        width: 100% !important;
         border-radius: 0;
     }
 

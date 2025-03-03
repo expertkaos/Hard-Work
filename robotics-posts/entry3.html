@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../robotics_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Robotics</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 3&nbsp;</h2>
+			<div class="date">March 3, 2025</div>
+		</div>
+
+		<div class="body" id="overview">
+			<p>So far in my project, I have figured out how to handle an LCD, display the desired text, and receive a
+				signal from an Arduino to control a device like a servo. The next step is to learn how to communicate
+				between two Arduinos quickly and reliably. I have set a goal to research the type of communication I
+				will be using, how it works, and which module I should purchase. By the end of this week, I plan to
+				order two communication modules to begin working with them next week.</p>
+		</div>
+
+		<div class="body" id="evidence">
+			<p>The transmitter that I bought: <a target="_blank"
+					href=https://www.amazon.com.au/NRF24L01-Wireless-Long-Range-Communication-Raspberry/dp/B0DS8JLDMK/ref=sr_1_1?crid=UJG3HZZV8NB6&dib=eyJ2IjoiMSJ9.E8eA3UrRR1CzP7DyGqrws9dy5jlMtx8n0PdX-VEbrLtCKph8tlZcUJfMTrgTZKnzjXsL1NutPJfqjY7VwMD7UUimwyFVUGvE0Yp-b5fkTYs.kBv8KKpuO8g4LB-kLxNR6nkCOa0xZZ9FcPUBuNlEK8o&dib_tag=se&keywords=HiLetgo%C2%AE+2pcs+NRF24L01%2BPA%2BLNA+Wireless+Transceiver+RF+Transceiver+Module+with+SMA+Antenna+2.4G+1100m+Compatible+Arduino&qid=1740537045&sprefix=hiletgo+2pcs+nrf24l01+pa+lna+wireless+transceiver+rf+transceiver+module+with+sma+antenna+2.4g+1100m+compatible+arduino%2Caps%2C254&sr=8-1>link</a>
+			</p>
+			<p>sorced infomation on the nRF24L01: <a target="_blank"
+					href=https://howtomechatronics.com/tutorials/arduino/arduino-wireless-communication-nrf24l01-tutorial />link</a>
+			</p>
+			<img src="robotics_evidence/entry_3/evidence_1.png">
+
+		</div>
+
+		<div class="body" id="content">
+			<p>The first thing I did this week was watch YouTube videos of other people's Arduino RC projects, as many
+				online resources are available. After looking at multiple, I came across the same type of communication
+				used across most of them. This is the nRF24L01, for which I have linked a website from which I got most
+				of my learning. The nRF24L01 is a low-power wireless transceiver module that operates at 2.4GHz and is
+				popular for Arduino projects due to its efficiency and ease of use. It supports data rates of up to 2
+				Mbps and offers a range of about 100 meters in open spaces, which will be plenty for the plane as we
+				will mostly fly it in open fields such as an oval. With features like multiple communication channels,
+				auto-acknowledgement of packets, and a simple SPI interface (Serial Peripheral Interface) for
+				communication, which is straightforward to implement with microcontrollers like Arduino, the nRF24L01 is
+				a versatile solution for my project.</p>
+			<p>There are multiple variations of the nRF24L01 series, all with different capabilities, the most common
+				being the nRF24L01, nRF24L01+, and nRF24L01P. The standard nRF24L01 offers a range of about 100 meters
+				and operates at a data rate of up to 2mps. The nRF24L01+ improves on this with a longer range of up to
+				1000 meters and includes features like a low-dropout regulator and dynamic payload length. Finally, the
+				nRF24L01P has all the enhancements of the plus version but offers even better power-saving features and
+				reliability in tougher communication environments. Each version is designed to cater to different needs
+				in wireless communication applications.</p>
+			<p>
+				After considering all my options, I searched on Amazon for the nRF24L01 to get it as soon as possible.
+				Initially, I was only looking for the nRF24L01+, but I came across a great bundle that included two
+				nRF24L01 modules and two nRF24L01+ modules, all at a much lower price than other alternatives. Although
+				the base nRF24L01 would suffice for my immediate needs, I realized that investing a little more for the
+				enhanced versions would benefit my future projects. Ultimately, I concluded that having better quality
+				modules would make me much happier and provide more versatility for upcoming applications.
+			</p>
+
+
+		</div>
+
+		<div class="body" id="review">
+			<h3>What new insights did I gain this week?</h3>
+			<p>I learned much about the nRF24L01 wireless transceiver module, such as its capabilities, variations, and
+				advantages for Arduino projects. Understanding its features, like multiple communication channels and
+				the SPI interface, was crucial for my project development. </p>
+
+			<h3>How did I prioritise my tasks this week?</h3>
+			<p>I prioritised learning about communion options first since they are essential for the next phase of my
+				project. I then focused on finding a good bundle for the nRF24L01 modules to ensure I had the needed
+				parts without overspending.</p>
+
+			<h3>What strategies did I use to stay motivated?</h3>
+			<p>I stayed motivated by setting clear goals, such as researching communication types and ordering the
+				necessary modules by the end of the week. The anticipation of progressing my project kept me engaged and
+				excited to work on my project.</p>
+
+		</div>
+
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>
