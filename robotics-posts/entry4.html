@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../robotics_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Robotics</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 4&nbsp;</h2>
+			<div class="date">March 11, 2025</div>
+		</div>
+
+		<div class="body" id="overview">
+			<p>I placed an order for the nRF24L01 wireless communication module last week, which finally arrived this
+				week. This week, I mainly focused on playing with the nRF24L01 to understand better how it works. By the
+				end of the week, I had a program that could send simple commands between two Arduinos. On top of this,
+				my short response exam for this class is coming up in the next two weeks, so I also focused on preparing
+				for my exam.</p>
+		</div>
+
+		<div class="body" id="evidence">
+
+			<video autoplay loop muted playsinline>
+				<source src="robotics_evidence/entry_4/evidence_1.mp4" type="video/webm">
+				Your browser does not support the video tag.
+			</video>
+
+			<h2>transmitter code:</h2>
+
+			<div class="code-block">
+				<div class="code-label">Arduino</div>
+				<button class="copy-button" onclick="copyCode(this)">Copy</button>
+				<pre><code class="language-clike"> 
+#include &lt;SPI.h&gt;
+#include &lt;nRF24L01.h&gt;
+#include &lt;RF24.h&gt;
+
+RF24 radio(7, 8);  // CE, CSN
+const byte address[6] = "00001";
+
+const int buttonPin = 0;
+
+void setup() {
+	radio.begin();
+	radio.openWritingPipe(address);
+	radio.setPALevel(RF24_PA_MIN);
+	radio.stopListening();
+}
+
+void loop() {
+	if (digitalRead(buttonPin) == LOW) {
+	radio.write("ON", 2);  // Send "ON"
+	} else {
+	radio.write("OFF", 3);  // Send "ON"
+	}
+}</code></pre>
+			</div>
+			<h2>receiver code:</h2>
+			<div class="code-block">
+				<div class="code-label">Arduino</div>
+				<button class="copy-button" onclick="copyCode(this)">Copy</button>
+				<pre><code class="language-clike">
+#include &lt;SPI.h&gt;
+#include &lt;nRF24L01.h&gt;
+#include &lt;RF24.h&gt;
+
+RF24 radio(7, 8);  // CE, CSN
+const byte address[6] = "00001";
+
+const int ledPin = 2;
+
+void setup() {
+	Serial.begin(9600);
+	radio.begin();
+	radio.openReadingPipe(0, address);
+	radio.setPALevel(RF24_PA_MIN);
+	radio.startListening();
+
+	pinMode(ledPin, OUTPUT);
+}
+void loop() {
+	if (radio.available()) {
+	char text[32] = "";
+	radio.read(&text, sizeof(text));
+	if (strcmp(text, "ON") == 0) {
+		digitalWrite(ledPin, HIGH);  // Turn LED on
+	} else if (strcmp(text, "OFF") == 0) {
+		digitalWrite(ledPin, LOW);  // Turn LED off
+	}
+	}
+} </code></pre>
+			</div>
+
+		</div>
+
+		<div class="body" id="content">
+			<p>The kit I bought included two nRF24L01+PA+LNA wireless modules, which are designed for long-range
+				communication due to their integrated power and noise amplifiers. Two antennas were provided to enhance
+				signal transmission for the long-range modules. Additionally, two standard nRF24L01 wireless modules for
+				shorter-range applications were included. Lastly, four adaptor boards can convert 5V to 3.3V to ensure
+				the module would not sustain too much power.
+			</p>
+			<img src="robotics_evidence/entry_4/evidence_2.jpg">
+			<p>The first thing I did before any type of coding was to figure out what pins I needed to connect the
+				communication module to the Arduino; the nRF24L01 has six pins on it. The pins are in the same position
+				for both types of radio transmitter, so luckily, there was no confusion about having the write pins for
+				the transmitter. However, when it came to the microcontroller because each Arduino board had different
+				SPI pins (serial peripheral interface), a communication method used by the Arduino to talk to other
+				electronic devices, I had to figure out which ones to use. Luckily, the transmitters I bought also came
+				with a sheet that told me the right pins were the SPI pins so that I could wire them up properly. The
+				image above is the sheet with the modules and the pins shown in the diagram. They follow different
+				colours for each pin, so I used jumper wires that follow this colour code to help avoid confusion. The
+				Arduino is fully wired up, as shown below.</p>
+			<img class="small-img" src="robotics_evidence/entry_4/evidence_3.jpg">
+			<p>For the microcontroller to understand how to use the radio module, I must first install the library to
+				make communicating with the nRF24L01 much easier. I could install this library straight from the Arduino
+				IDE named Rf24. After this, I can import the library into the code with the first three lines of both
+				codes.
+				With this, I wrote the transmitter code to initialise the given pins and specified the address. Then,
+				set up to ensure the module is ready to send data
+			</p>
+
+
+		</div>
+
+		<div class="body" id="review">
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+		</div>
+
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>Prism.highlightAll();</script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>

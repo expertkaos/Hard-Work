@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../robotics_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Robotics</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 12&nbsp;</h2>
+			<div class="date">May 19, 2025</div>
+		</div>
+
+		<div class="body" id="overview">
+			<p>This week was one of the most productive weeks that I have had in a while. This is because this week I
+				finally finished and sent of my PCB, but not to my knowledge at the time, this would be a much harder
+				thing to get completed. To get my PCB in time to present my project, i needed to send of my board to get
+				made so i set myself a deadline of sunday to have it finssished and bought. Still, my design was no way
+				near to finssihing in the previous weeks i learnt how to use kikad the cad for pcb added the symbols and
+				assigned footprints to each symbol but when it came to laying out the trakes i found alot of trouble to
+				get them in a make that sense without going over all over the boad to tackle my problems with this i
+				reached out to a family friend steve was more than happy to hand of some knowledge on pcb design after
+				years of experience.</p>
+		</div>
+
+		<div class="body" id="evidence">
+
+			<img src="robotics_evidence/entry_12/evidence_1.png">
+			<img src="robotics_evidence/entry_12/evidence_2.png">
+
+		</div>
+
+		<div class="body" id="content">
+			<p></p>
+			<img class="small-img" src="robotics_evidence/entry_12/evidence_3.jpg">
+
+
+
+		</div>
+
+		<div class="body" id="review">
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+		</div>
+
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>
