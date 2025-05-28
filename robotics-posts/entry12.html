@@ -47,6 +47,53 @@
 			<p></p>
 			<img class="small-img" src="robotics_evidence/entry_12/evidence_3.jpg">
 
+			<div class="code-block">
+				<div class="code-label">Python</div>
+				<button class="copy-button" onclick="copyCode(this)">Copy</button>
+				<pre><code class="language-python">
+const int potPin = A0;  // Pin connected to the potentiometer's 
+
+void setup() {
+  Serial.begin(9600);  // Initialize serial communication at 9600 baud rate
+}
+
+void loop() {
+  int potValue = analogRead(potPin);  // Read the potentiometer's value (0 to 1023)
+  Serial.println(potValue);           // Print the value to the Serial Monitor
+  delay(100);                         // Short delay for stability
+}				
+				</code></pre>
+			</div>
+			<p></p>
+			<div class="code-block">
+				<div class="code-label"></div>
+				<button class="copy-button" onclick="copyCode(this)">Copy</button>
+				<pre><code class="language-python">
+const int buzzerPin = 3; // Pin connected to the buzzer
+
+// Define the melody notes (in Hz)
+int melody[] = {2637, 3136, 3951}; // C4, D4, E4
+
+// Define the note durations (in milliseconds)
+int noteDurations[] = {150, 150, 150};
+
+void setup() {
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop() {
+  for (int i = 0; i < 3; i++) {
+    tone(buzzerPin, melody[i]);
+    delay(noteDurations[i]);
+    noTone(buzzerPin);
+    delay(20); // Short pause between notes
+  }
+  delay(1000); // Wait before repeating the melody
+}
+				
+				</code></pre>
+			</div>
+
 
 
 		</div>
