@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../robotics_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Robotics</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 1&nbsp;</h2>
+			<div class="date">February 10, 2025</div>
+		</div>
+
+		<div class="body" id="overview">
+			<p>This entry covers the first two weeks of this course. Within these two weeks, we first covered the
+				structure of this class, which mainly consisted of creating a project that we would be working on and
+				later presenting on it. After a brief of the class overview, we were instructed to brainstorm our
+				project.</p>
+		</div>
+
+		<div class="body" id="evidence">
+			<p>link to robotics project document: <a target="_blank" href=https://docs.google.com/document/d/1DEn_uESzX9Fuu38RCP-RBG248YXv8rovpr8HYiACh-8/edit?usp=sharing>link</a></p>
+
+			<img class="code-img" src="robotics_evidence/entry_1/evidence_1.jpg">
+
+			<div class="code-block">
+				<div class="code-label">Arduino</div>
+				<button class="copy-button" onclick="copyCode(this)">Copy</button>
+				<pre><code class="language-python">
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+int buttonPin = 1; // the pin that the pushbutton is attached to
+int counter = 0; // initialize a counter
+
+void setup() {
+	// set up the LCD's number of columns and rows:
+	lcd.begin(16, 2);
+	lcd.setCursor(0, 0);
+	
+	lcd.print("Rhys hate");  // Print a message to the LCD.
+	
+	pinMode(buttonPin, INPUT_PULLUP); // initialize the pushbutton pin as an input
+}
+
+void loop() {
+	if (digitalRead(buttonPin) == LOW) { // check if the button is pressed
+	counter++; // increment the counter
+	lcd.setCursor(0, 1); // move to the second row
+	lcd.print("Counter: ");
+	lcd.print(counter); // display the counter value
+	delay(200); // debounce delay
+	}
+}
+
+				
+				</code></pre>
+			</div>
+
+		</div>
+
+		<div class="body" id="content">
+			<p>I had some ideas floating around, but I eventually settled on creating a plane and a controller that two
+				Arduinos would control. As it is quite a challenging task, I have decided to tackle it with one of my
+				peers to divide the workload. We agreed that I would create the controller and my partner would work on
+				the plane.
+			</p>
+			<p>
+				I started watching videos on similar projects to help me better understand how I would approach the task
+				of making the controller and the components I would need. On a basic level, all I need is two joysticks,
+				a transmitter module and an Arduino; with this, I can control the throttle and the steering, but later
+				on, I can also add an LCD and a potentiometer so I can change the channel code easily and having it
+				shown on the LCD this will also hopefully allow finding signals for other RC vehicles also adding a
+				switch as an arm switch could also be a good idea so the plane does not turn on accidentally and if in a
+				emergency it needs to turn off.
+			</p>
+			<p>As I wanted to implement an LCD into my project and had never played with one before, I tried to figure
+				out how it works. The best way to do this is to do a tiny project that involves an LCD. The project I
+				decided to do for this is a counter that the number goes up when a button is pressed. </p>
+
+
+		</div>
+
+		<div class="body" id="review">
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+		</div>
+
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>
