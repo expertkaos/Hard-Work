@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../robotics_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Robotics</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 2&nbsp;</h2>
+			<div class="date">September 15, 2025</div>
+		</div>
+
+		<div class="body" id="overview">
+			<p>This week, I wanted to further my LEGO recognition. Previously, I used Python to access the camera and
+				read the colour of a specific pixel. However, this approach had multiple problems, including inaccuracy.
+				It meant that the brick had to be perfectly under that camera in a certain position it could only do one
+				brick at a time and colour and with talking to some of my pears with my project one of the chucked out
+				the idea with when sorting out lego its better to sort out the types of bricks over the colour so this
+				encouraged me to train a ai to be able to detect what type of brick is in front of the camera. Doing so
+				is a big task, especially since I have no experience with artificial intelligence and computer vision.
+				Instead of trying to complete it all in one week, I decided to break it down. This week, I gathered all
+				the training photos.</p>
+		</div>
+
+		<div class="body" id="evidence">
+			<p>
+				The websites i looked at this week to learn a bit about VGG16 <a target="_blank" href=https://keras.io/api/applications/vgg />Link1</a>
+				&
+				<a target="_blank" href=https://github.com/KhushiBhadange/Deep-Learning-Image-Recognition-with-VGG16>Link2</a>.
+
+			</p>
+
+			<img src="robotics_evidence/entry_2/evidence_1.jpg">
+
+
+		</div>
+
+		<div class="body" id="content">
+			<p>I set up my webcam, the one I will likely use for the actual event, on a tripod and positioned it
+				directly above a white piece of paper. The camera has a light on it, which is very helpful because it
+				eliminates most shadows. Shadows can be problematic when it comes to detecting shapes. I ended up with
+				325 photos of three different bricks, all shot from various angles and positions. I wanted to ensure the
+				system could recognise each brick, regardless of its placement, so I took pictures from every angle and
+				rotation, and even moved the bricks around in front of the camera. Moving the bricks around the camera
+				was important because the side of the bricks can be more or less visible depending on how they're
+				positioned. I also ensured the background was plain to prevent interference during training. 
+			</p>
+			<img src="robotics_evidence/entry_2/evidence_2.png">
+			<p>The original idea was to take photos of various colours. However, after discovering that I would take
+				around 100 photos per brick, I decided to use these photos as a preliminary draft. This way, I can learn
+				how to improve them and what adjustments to make as I continue to work with computer vision and
+				algorithms. </p>
+			<img class="small-img" src="robotics_evidence/entry_2/evidence_3.jpg">
+			<p>I plan to put all these photos into a pre-built algorithm, but before I take any pictures, I want to
+				understand what characteristics make images suitable for training. To do so, I examined various
+				algorithms. I came across VGG16, a neural network that analyses images through layers to detect
+				features, starting from simple patterns like edges and progressing to more complex shapes, ultimately
+				classifying the image. In robotics, VGG126 can help a robot recognise and identify objects from its
+				camera feed.</p>
+
+		</div>
+
+		<div class="body" id="review">
+			<h3>What am I going to do next week?</h3>
+			<p>Next week, I plan to utilise this training data to train the model. I've been checking out different
+				options and decided to go with VGG after reviewing it this week. It'll do a good job for what I need,
+				and I'm excited to see how well it learns from the data.</p>
+
+			<h3>What is something I've found that could become a future problem?</h3>
+			<p>After chatting with one of my friends, he pointed out that having the camera right above the brick makes
+				it tough to figure out its height. This isn't a big deal for the blocks I'm currently training the
+				algorithm on, but if I want to branch out to different types of blocks, I'll need to change things up.
+				The easiest fix would be to angle the camera like one of the images I showed earlier, but I'm not sure
+				if that would make it harder to recognise the blocks overall.</p>
+
+			<h3>What did I do best this week?</h3>
+			<p>I accomplished something I'm quite proud of by breaking down a big task into smaller, bite-sized pieces.
+				Instead of feeling overwhelmed by the whole workload, I was able to dive into it one step at a time.
+				This way, I made solid progress and didn't get bogged down by the stress of what was ahead. It's a great
+				feeling to see how these little wins are helping me move forward and making the big project feel way
+				more doable.</p>
+
+		</div>
+
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>
