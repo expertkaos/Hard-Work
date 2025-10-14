@@ -25,22 +25,28 @@
 		</div>
 
 		<div class="body" id="overview">
-			<p></p>
+			<p>This week, I added the ability to gather resources by drawing inspiration from survival games like Ark:
+				Survival Evolved. When you get twigs from chopping down trees and rocks from mining, builders decided to
+				make a tree and builder asset alongside the item contour part, with sticks and pebbles. For creating the
+				new assets, I chose to use Blender, a 3D modelling tool I had previously used. I used tutorials to get
+				an overall idea of how to create more complex assets, and they provided useful add-ons that made my life
+				much easier.
+			</p>
 		</div>
 
 		<div class="body" id="evidence">
-			<p>
-				<a target="_blank" href=https://link>link</a>
+			<p>The youtube videos tht help me make the assets: 
+				<a target="_blank" href=https://www.youtube.com/watch?v=gD_AbaqzBl8>Tree</a>
 				&
-				<a target="_blank"href=https://link>link2</a>
+				<a target="_blank" href=https://www.youtube.com/watch?v=4hdLx9mlizM>Boulder</a>
 			</p>
-			
+
 			<video autoplay loop muted playsinline>
 				<source src="game_evidence/entry_3/evidence_1.mp4" type="video/webm">
 				Your browser does not support the video tag.
 			</video>
 
-			
+
 			<div class="code-block">
 				<div class="code-label">C#</div>
 				<button class="copy-button" onclick="copyCode(this)">Copy</button>
@@ -93,7 +99,7 @@ public class MineableResource : MonoBehaviour
 }
 				</code></pre>
 			</div>
-<p></p>
+			<p></p>
 			<div class="code-block">
 				<div class="code-label">C#</div>
 				<button class="copy-button" onclick="copyCode(this)">Copy</button>
@@ -150,23 +156,30 @@ public class PlayerController : MonoBehaviour
 		</div>
 
 		<div class="body" id="content">
+			<p>The first asset I decided to create was a tree. This turned out to be the most time-consuming and challenging asset to make due to an error I encountered along the way. I searched on YouTube for tutorials on how to make a tree. Many of the tutorials suggested crafting a tree shape by extruding upwards. However, creating the shape of a tree is quite complex, and even slight mistakes can be very noticeable.</p>
+			<p>Eventually, I discovered an add-on called MTree, which allowed me to create procedurally generated trees with detailed constraints that I could easily manipulate to achieve my desired look. This add-on also enabled me to add leaves to the tree with a single click. However, the leaves became the most time-consuming part of the process.</p>
 			<img src="game_evidence/entry_3/evidence_2.png">
-			<p></p>
+			<p>When I tried to export my tree to Unity, the leaves would disappear. This issue was caused by the add-on generating leaves as instances rather than as actual meshes. Whale instances render much faster in Blender; in Unity, they cannot be processed, so the leaves do not appear.</p>
+			<p>I spent considerable time trying to convert the leaves into real meshes using the “Make Instances Real” option. Unfortunately, whenever I did this, the program would create a new tree mesh in the place of the leaves instead of just converting the leaves. This caused my computer to crash multiple times.</p>
+			<p>After struggling with this process, I decided to explore a different approach to generating the leaves. I discovered that I could use Blender’s built-in hair simulator to distribute the leaves over the branches. This method worked well, but I did need to select the faces manually where I wanted the leaves generated.  </p>
+			<p>For the boulder, this was much easier. I found myself watching a video explaining how to set up and use an add-on that lets you easily generate a boulder of any size or shape. I played with the volumes until I was happy with the result, then applied a rock material. I used the same technique to make the pebbles, the item that drops when the boulder is destroyed. For the stick, this was straightforward forward shaping a cilnder until i was happy with the result using my knowledge on blender to make this in no time one little learning experience i found from this tho is that the normals the main face to a face matter when exporting into unity, unitys shader does a thing that it does not render the back of a face which means that if the normals re not set properly than your result will have weird invisible effect.</p>
+			<p>After importing the assets into Unity, I worked on the resource gathering part. This was pretty straightforward with two scripts: `MineableResource.cs` and `PlayerController.cs`. The `MineableResource` script handles rocks and trees, controlling what drops, how many and where. When you mine something, it spawns items nearby and then gets removed. The `PlayerController` script is for the player; when you hit “E,” it checks if you’re looking at a resource. If you're, it makes the resource drop its items and remove itself. Writing this code was relatively easy. To determine where the player is looking, I used the same raycast I created for picking up objects in a previous week.</p>
 			<img src="game_evidence/entry_3/evidence_3.png">
+			<p>I experimented with the Gaia asset to create a world where I could later distribute trees and rocks across an island. The island's shape is ideal because it features varying levels of flatness. There is one main flat area that is easy to navigate, along with a hill to explore in the corner, as shown in the image above.</p>
 
 
 		</div>
 
 		<div class="body" id="review">
-			<h3></h3>
-			<p></p>
+			<h3>What challenges did I encounter in my recent work, and how did overcoming them contribute to my overall skills and understanding of the task at hand?</h3>
+			<p>This week was definitely a challenge, especially when I was working on the tree asset and dealing with those annoying export issues in Blender. Figuring everything out not only helped me level up my 3D modelling skills, but also taught me about instances and their use cases and gave me some solid problem-solving tricks that’ll come in handy down the line.</p>
 
-			<h3></h3>
-			<p></p>
+			<h3>How did the tools and techniques I used improve my workflow, and are there alternative methods I could consider in future projects to enhance my efficiency?</h3>
+			<p>The tools I used really made things easier. For instance, the mtree add-on sped up tree creation, and Blender’s hair simulator worked great for spreading out the leaves as real meshes. I realised I need to keep an eye on how these tools interact with Unity, so I’m thinking about checking out some different methods to dodge issues like normals messing with my mesh. </p>
 
-			<h3></h3>
-			<p></p>
-			
+			<h3>In what ways did my recent work impact the overall experience or outcome of the project, and how can I gather feedback to refine and improve this aspect moving forward?</h3>
+			<p>The resource-gathering setup really boosted gameplay by encouraging players to explore and interact more. My scripts did a good job of managing mining and generating resources. With the new way to access materials, I can now craft new items, including a spear that I can use to fight enemies.</p>
+
 		</div>
 
 
