@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Andrews hard work</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../entry.css">
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="back">
+			<a href="../robotics_main.html"><i class="material-icons"
+					style="font-size: 60px; color: rgb(219, 136, 111);">keyboard_arrow_left</i></a>
+		</div>
+		<h1>Robotics</h1>
+	</nav>
+	<nav class="page-body">
+		<div class="header">
+			<h2>Entry 3&nbsp;</h2>
+			<div class="date">Octobter 20, 2025</div>
+		</div>
+
+		<div class="body" id="overview">
+			<p>This week, I began working with the Raspberry Pi I received last week, focusing on the detection system
+				using a convolutional neural network (CNN) I trained in Python. The goal was for the AI to recognise
+				three types of LEGO pieces: 2x2 bricks, 2x3 bricks, and flat 2x4 tiles. </p>
+		</div>
+
+		<div class="body" id="evidence">
+
+			<video autoplay loop muted playsinline>
+				<source src="robotics_evidence/entry_3/evidence_1.mp4" type="video/webm">
+				Your browser does not support the video tag.
+			</video>
+
+
+			<div class="code-block">
+				<div class="code-label">Python</div>
+				<button class="copy-button" onclick="copyCode(this)">Copy</button>
+				<pre><code class="language-python">
+"""
+loads images from folders, builds a model, trains it, and saves it to disk.
+"""
+
+import tensorflow as tf
+from tensorflow.keras import layers, models
+from tensorflow.keras.preprocessing import image_dataset_from_directory
+
+import os
+import numpy as np
+
+# ---------------------------
+# PATHS AND PARAMETERS
+# ---------------------------
+
+DATASET_PATH = "dataset"
+
+# ---------------------------
+# LOAD DATASET
+# ---------------------------
+# This automatically labels images based on folder names.
+train_ds = image_dataset_from_directory(
+    DATASET_PATH,
+    validation_split=0.2,
+    subset="training",
+    seed=123,
+    image_size=(128, 128),  # Resize images to this size (smaller = faster training, lower accuracy)
+    batch_size=16 # Number of images processed per batch (lower = uses less RAM)
+)
+
+val_ds = image_dataset_from_directory(
+    DATASET_PATH,
+    validation_split=0.2,
+    subset="validation",
+    seed=123,
+    image_size=(128, 128),
+    batch_size=16
+)
+
+#Save class names before transforming the dataset
+class_names = train_ds.class_names
+num_classes = len(class_names)
+
+# ---------------------------
+# OPTIMIZE DATA PIPELINE
+# ---------------------------
+AUTOTUNE = tf.data.AUTOTUNE
+train_ds = train_ds.cache().shuffle(100).prefetch(buffer_size=AUTOTUNE)
+val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
+
+# ---------------------------
+# BUILD CNN MODEL
+# ---------------------------
+model = models.Sequential([
+    layers.Rescaling(1./255, input_shape=(128, 128, 3)), # Converts pixel values from 0–255 -> 0–1 range (easier for the model to learn
+    layers.Conv2D(32, 3, activation='relu'),
+    layers.MaxPooling2D(), # Shrinks the image while keeping the most important features
+    layers.Conv2D(64, 3, activation='relu'),
+    layers.MaxPooling2D(),
+    layers.Conv2D(128, 3, activation='relu'),
+    layers.MaxPooling2D(),
+    layers.Flatten(), #Turns the 3D feature maps into a flat vector
+    layers.Dense(128, activation='relu'),
+    layers.Dense(num_classes, activation='softmax')
+])
+
+# ---------------------------
+# COMPILE MODEL
+# ---------------------------
+# 'adam' = optimizer that adjusts learning rate automatically
+# 'sparse_categorical_crossentropy' = loss for multi-class classification
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+
+# ---------------------------
+# TRAIN MODEL
+# ---------------------------
+history = model.fit(train_ds, validation_data=val_ds, epochs=10) # epochs = number of times the model sees the entire dataset
+
+# ---------------------------
+# SAVE MODEL
+# ---------------------------
+model.save("lego_classifier.h5") # Saves the model learned weights			
+				</code></pre>
+			</div>
+			<p></p>
+			<div class="code-block">
+				<div class="code-label">Python</div>
+				<button class="copy-button" onclick="copyCode(this)">Copy</button>
+				<pre><code class="language-python">
+"""
+lego_detection.py
+"""
+
+import cv2
+import tensorflow as tf
+import numpy as np
+
+# Load the trained model
+model = tf.keras.models.load_model("lego_classifier.h5")
+
+# Class names
+class_names = ["2x2_brick", "2x3_brick", "flat_tile"]
+
+# Start camera
+cap = cv2.VideoCapture(0)  # 0 for USB webcam
+
+while True:
+    ret, frame = cap.read() # Capture a frame from the camera
+    if not ret:
+        break # Stop if frame capture fails
+
+    # Resize frame to 128x128 pixels to match model input
+    img = cv2.resize(frame, (128, 128))
+
+    # Normalise pixel values and add batch dimension: (1, 128, 128, 3)
+    img_array = np.expand_dims(img, axis=0) / 255.0
+
+    # Predict class probabilities
+    predictions = model.predict(img_array)  # Returns array of probabilities
+    predicted_class = class_names[np.argmax(predictions)] # Choose highest probability
+    confidence = np.max(predictions) # Confidence of the prediction
+
+    # Display prediction
+    label = f"{predicted_class} ({confidence*100:.1f}%)"
+    cv2.putText(frame, label, (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2)
+    cv2.imshow("LEGO Classifier", frame)  # Show the video frame with prediction
+
+    # Press 'q' to quit
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+
+# Release camera and close OpenCV windows
+cap.release()
+cv2.destroyAllWindows()
+				
+				</code></pre>
+			</div>
+
+		</div>
+
+		<div class="body" id="content">
+			<p></p>
+			<img src="robotics_evidence/entry_3/evidence_2.png">
+
+
+		</div>
+
+		<div class="body" id="review">
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+			<h3></h3>
+			<p></p>
+
+		</div>
+
+
+	</nav>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+	<script>
+		function copyCode(button) {
+			const code = button.parentElement.querySelector('pre code').innerText;
+			navigator.clipboard.writeText(code).then(() => {
+				button.textContent = 'Copied';
+				setTimeout(() => {
+					button.textContent = 'Copy';
+				}, 1000);
+			}).catch(err => {
+				console.error('Failed to copy code: ', err);
+			});
+		}
+	</script>
+</body>
+
+</html>
