@@ -27,9 +27,12 @@
 		<div class="body" id="overview">
 			<p>This week, I began working with the Raspberry Pi I received last week, focusing on the detection system
 				using a convolutional neural network (CNN) I trained in Python. The goal was for the AI to recognise
-				three types of LEGO pieces: 2x2 bricks, 2x3 bricks, and flat 2x4 tiles. </p>
+				three types of LEGO pieces: 2x2 bricks, 2x3 bricks, and flat 2x4 tiles. To achieve this, I wrote two
+				different Python scripts. One way to train the AI using Keras and TensorFlow, and after training the AI,
+				a script was used to take a frame using a camera and run it through the AI to find what type of brick it
+				is.</p>
 		</div>
-
+f
 		<div class="body" id="evidence">
 
 			<video autoplay loop muted playsinline>
@@ -189,21 +192,66 @@ cv2.destroyAllWindows()
 		</div>
 
 		<div class="body" id="content">
-			<p></p>
+			<p>The process started well. I collected images for each class and built a simple CNN in TensorFlow,
+				training it over small datasets of around 100 for each brick type, which is later rescaled to 128x128
+				pixels. I made sure that the data pipeline was optimised for speed using caching and prefetching. The
+				model was trained without many errors except for struggling to install the libraries on an older Python
+				version properly, and I was able to save it to disk, so that it can be used in the code to actually
+				detect the code in real time.</p>
+			<p>To get the camera to work, I wrote a script that uses my computer webcam and grabs each frame for the AI
+				to analyse. I resize every frame to fit the input size of my CNN, switch from BGR to RGB, and normalise
+				it so the model can understand the pixel values correctly. Then the model predicts which LEGO piece is
+				in view and gives a confidence score in percentage, which I show right on the video feed. This setup
+				lets me see how the AI does with live input and try out different pieces and angles on the fly.</p>
 			<img src="robotics_evidence/entry_3/evidence_2.png">
+			<p>And surprise, surprise, my code did not work. I ran into the problem that no matter what type of brick I
+				put in front of the camera, the program would always result in detecting the flat tile, with a value of
+				around 88%. Like any error in coding, I found this situation quite frustrating, and it set me back a
+				significant amount of time. I spent a good portion of my day trying to figure out what was going wrong
+				and why it wasn’t working. After a couple of hours, I identified several possible reasons for said
+				issue.</p>
+			<p>A likely reason for the problem is that the data set is insufficient. The number of images for each class
+				might have been too small or imbalanced, meaning the AI never learned enough features to tell the bricks
+				apart. With the lack of quality photos, there could also be a problem with similar visual features; the
+				bricks are all the same colours. The main thing that distinguishes them is the number of studs, which, a
+				lot of the time, can be very hard to see and, for an AI that downscales the image, could be the source
+				of my problem. It also does not help that, when taking the photos for the AI training, I shot them
+				directly above. This means the AI can only see an angle at a time, which will make it much harder to
+				detect the right one.</p>
+			<p>From this, my training data could be improved, likely resulting in a fix for my program. Unfortunately, I
+				ran out of time this week to recreate the data and fix the multiple problems to see the outcome, so I
+				will have to work on the new dataset next week. I made progress this week by advancing my knowledge and
+				writing some code for the CNN and real time detection system, even though it may not work as intended.
+			</p>
 
 
 		</div>
 
 		<div class="body" id="review">
-			<h3></h3>
-			<p></p>
+			<h3>What were the main challenges I faced this week, and how did they impact my progress?</h3>
+			<p>This week, I ran into a bit of a problem: the model couldn’t tell the different LEGO pieces apart; no
+				matter which brick I showed it, it always identified the flat tile. It was very frustrating and really
+				set me back, so I had to rethink my training data and process. Instead of moving forward with real time
+				detection, I ended up troubleshooting and digging into where things might be going wrong. This whole
+				experience showed me that setbacks are just part of the learning journey, and that tackling these bumps
+				can lead to valuable insights.</p>
 
-			<h3></h3>
-			<p></p>
+			<h3>What did I learn about my project and the tools I used this week?</h3>
+			<p>I picked up a lot on how important it is to have a well balanced dataset when training AI models, and
+				it's not that smart compared to what I thought. If there are not enough images or if they are not
+				capturing different eagles and lighting, it can really hold back the model's ability to recognise what
+				type of LEGO brick it is looking at. I also got more hands-on with TensorFlow and its data pipeline
+				tools, which are super important for making training more efficient. Plus, when I was troubleshooting
+				some library installation issues on my old Python version, I learned how to install libraries to certain
+				Python versions directly.</p>
 
-			<h3></h3>
-			<p></p>
+			<h3>How can I apply what I learned this week to improve my work moving forward?</h3>
+			<p>I took a lot away from this week, the main thing is how I can improve my training set and on top of that,
+				how to program TensorFlow and Keras. I am going to take the new found knowledge of how to improve my
+				training photos the better create one making sure i take the pictures from an angle so more than one
+				side can be seen have an even number of total images for each brick type and maybe have a different
+				colour for each type so the ai can have an easier time and see if it was the trining mterl or the code
+				that i wrote the find the reason for the problem.</p>
 
 		</div>
 
